@@ -1,7 +1,9 @@
-<div class=”container”>
+<app-registration-form (newUser) ="addUser($event)"></app-registration-form>
+
+<div >
 
   <div class="reglist">
-    <table class="table table-striped">
+    <table class="">
       <thead>
         <tr>
           <th>#</th>
@@ -17,17 +19,17 @@
           <td>{{ registration.firstName }}</td>
           <td>{{ registration.lastName }}</td>
           <td>
-            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+            <button type="button"  (click)="onEdit(i)">Edit</button>
           </td>
           <td>
-            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+            <button type="button"  (click)="onDelete(i)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="text-right">
-      <button type="submit" class="btn btn-primary" (click)="onNew()">New</button>
-    </div>
+    <!--<div class="text-right">
+      <button type="submit"  (click)="onNew()">New</button>
+    </div>-->
   </div>
   <br>
 </div>
@@ -35,20 +37,20 @@
 
 <div class="regentry" *ngIf="showNew">
   <form (ngSubmit)="onSave()">
-    <div class="form-group row">
-      <label for="firstname-input" class="col-2 col-form-label">First Name</label>
-      <div class="col-10">
+    <div class="form-group">
+      <label for="firstname-input">First Name</label>
+      <div >
         <input class="form-control" type="text" [(ngModel)]="regModel.firstName" name="firstName">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="lastname-input" class="col-2 col-form-label">Last Name</label>
-      <div class="col-10">
+      <label for="lastname-input" >Last Name</label>
+      <div >
         <input class="form-control" type="text" [(ngModel)]="regModel.lastName" name="lastName">
       </div>
     </div>
-    <button type="submit" class="btn btn-success">{{submitType}}</button>
-    <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    <button type="submit" >{{submitType}}</button>
+    <button type="submit" (click)="onCancel()">Cancel</button>
   </form>
 </div>

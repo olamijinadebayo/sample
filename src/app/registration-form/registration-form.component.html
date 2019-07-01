@@ -1,0 +1,29 @@
+
+
+<!--{{diagnostic}}-->
+<div [hidden] ="submitted" class="regentry" >
+  <form (ngSubmit)="onSubmit()" #regForm ="ngForm">
+    <div class="form-group">
+      <label for="firstname-input">First Name</label>
+      <div>
+        <input class="form-control" type="text" [(ngModel)] ="model.firstName" #firstName  name="firstName" required>
+      </div>
+
+     
+    </div>
+
+    <div class="form-group ">
+      <label for="lastname-input">Last Name</label>
+      <div>
+        <input class="form-control" type="text" [(ngModel)] ="model.lastName" #lastName name="lastName" required>
+      </div>
+    </div>
+    <button type="button"  (click)="newReg(); regForm.reset()">New Registration</button>
+    <button type="submit" [disabled]="!regForm.form.valid" (click) ="addNewItem(firstName.value,lastName.value)">save</button>
+  </form>
+</div>
+
+<!--<div>
+ first-name: {{ model.firstName}}
+  last-name: {{ model.lastName}}
+</div>-->

@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+import { Registration } from '../registration';
 
 
-class Registration {
-  constructor(
-    public firstName: string = '',
-    public lastName: string = '',
-  ) { }
-}
 
 
 @Component({
@@ -17,26 +12,29 @@ class Registration {
 
 export class RegistrationComponent implements OnInit {
 
-  registrations: Registration[] = [];
+    registrations: Registration[] = [];
+
+    addUser(newItem:{ firstName, lastName }) {
+        this.registrations.push(newItem);
+    }
 
   // It maintains registration Model
   regModel: Registration;
 
   // It maintains registration form display status. By default it will be false.
   showNew: Boolean = false;
+
   // It will be either 'Save' or 'Update' based on operation.
   submitType: string = 'Save';
+
   // It maintains table row index based on selection.
   selectedRow: number;
 
   constructor() {
-    // Add default registration data.
-    this.registrations.push(new Registration('Johan', 'Peter'));
-    this.registrations.push(new Registration('Mohamed', 'Tariq'));
-    this.registrations.push(new Registration('Nirmal', 'Kumar'));
+    
   }
 
-  // This method associate to New Button.
+   //This method associate to New Button.
   onNew() {
     // Initiate new registration.
     this.regModel = new Registration();
@@ -45,7 +43,7 @@ export class RegistrationComponent implements OnInit {
     // display registration entry section.
     this.showNew = true;
   }
-  // This method associate to Save Button.
+   //This method associate to Save Button.
   onSave() {
     if (this.submitType === 'Save') {
       // Push registration model object into registration list.
@@ -84,7 +82,16 @@ export class RegistrationComponent implements OnInit {
     // Hide registration entry section.
     this.showNew = false;
   }
+
+  getReg() {
+      return [
+          {  'firstName': "ola", 'lastName':"ade" },
+          { 'firstName': "eden", 'lastName': "hazard"},
+          { 'firstName': "cristiano", 'lastName':"ronaldo"},
+      ]
+  }
   ngOnInit() {
+      this.registrations = this.getReg();
   }
 
 }
