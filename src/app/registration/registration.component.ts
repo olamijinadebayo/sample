@@ -1,7 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { Registration } from '../registration';
 
-
+import { RegistrationService } from '../registration.service';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
 
     registrations: Registration[] = [];
 
-    addUser(newItem:{ firstName, lastName }) {
+    addUser(newItem:{ firstName:string, lastName:string }) {
         this.registrations.push(newItem);
     }
 
@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
   // It maintains table row index based on selection.
   selectedRow: number;
 
-  constructor() {
+  constructor(private registrationservice: RegistrationService) {
     
   }
 

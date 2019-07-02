@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +17,8 @@ import { RegistrationFormComponent } from './registration-form/registration-form
     NavbarComponent,
     HomeComponent,
     RegistrationComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    
   ],
   imports: [
     BrowserModule,
